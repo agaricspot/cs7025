@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <label for="amount">Enter Amount</label>
+        <input type="number" id="amount" value="1.00" min="0.0"/>
+
+        <label for="scurrency"> Choose Initial Currency</label>
+        <select name="currency" id="scurrency">
+            <option value="usd">USD</option>
+            <option value="cad">CAD</option>
+            <option value="eur">EUR</option>
+        </select>
+
+        <label for="ecurrency"> Choose Final Currency</label>
+        <select name="currency" id="ecurrency">
+            <option value="usd">USD</option>
+            <option value="cad">CAD</option>
+            <option value="eur">EUR</option>
+        </select>
+
+        <button type="button" onclick="convertFromForm()"> Convert </button>
+        <p id="result"></p>
+
+        <script src="converter.js" >
+
+
+        </script>
+    </body>
+</html>
