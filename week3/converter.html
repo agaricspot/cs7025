@@ -17,6 +17,8 @@
             <option value="usd">USD</option>
             <option value="cad">CAD</option>
             <option value="eur">EUR</option>
+            <option value="gbp">GBP</option>
+            <option value="aud">AUD</option>
         </select>
 
         <label for="ecurrency"> Choose Final Currency</label>
@@ -24,10 +26,14 @@
             <option value="usd">USD</option>
             <option value="cad">CAD</option>
             <option value="eur">EUR</option>
+            <option value="gbp">GBP</option>
+            <option value="aud">AUD</option>
         </select>
 
-        <button type="button" onclick="convertFromForm()"> Convert </button>
+        <button type="button" onclick="convertFromForm()"> Convert </button> 
+        <button type="button" onclick="listCurrencies()"> List Currencies </button>
         <p id="result"></p>
+        <ul id="currency-list" hidden></ul>
 
         <script src="converter.js" >
 
