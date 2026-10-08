@@ -1,14 +1,27 @@
-let data_src = "https://api.open-meteo.com/v1/forecast?latitude=45.5234&longitude=-122.6762&current=temperature_2m&hourly=temperature_2m,precipitation_probability&forecast_days=1";
+const LOCATIONS = {
+    portland:  { name: 'Portland, OR',  lat: 45.5234, lon: -122.6762, tz: 'America/Los_Angeles' },
+    dublin:    { name: 'Dublin, Ireland', lat: 53.3498, lon: -6.2603,  tz: 'Europe/Dublin' },
+    worcester: { name: 'Worcester, MA', lat: 42.2626, lon: -71.8023,  tz: 'America/New_York' },
+};
 
+let current = LOCATIONS.portland;
+let requestId = 0; 
+
+function build_url(loc) {
+    return 'https://api.open-meteo.com/v1/forecast'
+        + `?latitude=${loc.lat}&longitude=${loc.lon}`
+        + '&current=temperature_2m,cloud_cover,is_day'
+        + '&hourly=temperature_2m,precipitation_probability'
+        + `&forecast_days=1&timezone=${encodeURIComponent(loc.tz)}`;
+}
 function update_time(){
-    const now = new Date(); 
     const formatter = new Intl.DateTimeFormat('en-US', {
         hour: 'numeric',
         minute: 'numeric', 
-        timeZone: 'America/Los_Angeles'
+        timeZone: current.tz
     });
 
-   document.getElementById('time').textContent = `${formatter.format(now)}`;
+   document.getElementById('time').textContent = `${formatter.format(new Date())}`;
 }
 
 function to_f(temp){
@@ -16,61 +29,38 @@ function to_f(temp){
 
 }
 
-setInterval(update_time, 10000);
-update_time(); 
+function load_weather(loc){
+    const myRequest = ++requestId;
+    current = loc;
 
+    document.getElementById('place').textContent = loc.name;
+    document.getElementById('place2').textContent = loc.name;
+    update_time(); 
 
+    fetch(build_url(loc))
+    .then((response) => response.json())
 
-fetch(data_src)
-    .then((response) => {
-        return response.json();
-    })
     .then((data) => {
-        //class change for colors goes here 
+        if(myRequest !== requestId) return; 
+
+        //set cloudcover params
         let cover = data.current.cloud_cover;
-        let cloud_active = cover > 30;
-        let overlay_active = cover > 50;
-
-        document.getElementById('cloud').classList.toggle('active', cloud_active);
-        document.getElementById('overlay').classList.toggle('active', overlay_active);
-
-        look.className = isDay ? 'day' : 'night';
+        console.log(loc.name, 'cover =', cover, 'cloud classes:', document.getElementById('cloud').className);
+        document.getElementById('cloud').classList.toggle('active', cover>30);
+        document.getElementById('overlay').classList.toggle('active', cover>50);
+        document.getElementById('look').className = !current.isDay ? 'day' : 'night';
         
-
-        /*if(!data.isDay){ //for some reason its stored backward 
-            document.getElementById('look').setAttribute('class', 'day'); 
-        } else {
-            document.getElementById('look').setAttribute('class', 'night');
-        
-        }*/
-
-
-
+        //temperature & conversion
         let temp = data.current.temperature_2m;
-        let f = to_f(temp);
-        document.getElementById('temp').textContent =
-            `${temp}°C / ${f}°F`;
+        document.getElementById('temp').textContent =`${temp}°C / ${to_f(temp)}°F`;
 
-        let arr = data.hourly.temperature_2m;
-        let arr_precip = data.hourly.precipitation_probability;
-        let max = arr[0]; 
-        let min = arr[0];
-        let max_precip = arr_precip[0];
+        //calc high and low
+        let temps = data.hourly.temperature_2m;
+        let precip = data.hourly.precipitation_probability;
+        let max = Math.max(...temps)
+        let min = Math.min(...temps);
+        let max_precip = Math.max(...precip)
 
-        for(let i = 1; i<arr.length; i++){
-            if(max < arr[i]){
-                max = arr[i];
-            }
-
-            if(min > arr[i]){
-                min = arr[i];
-            }
-
-            if(max_precip < arr_precip[i]){
-                max_precip = arr_precip[i];
-            }
-
-        }
 
         document.getElementById('high').textContent = `${max}°C / ${to_f(max)}°F`
         document.getElementById('low').textContent = `${min}°C / ${to_f(min)}°F`        
@@ -79,4 +69,21 @@ fetch(data_src)
 
     })
     .catch((err) => console.error('Cannot fetch weather data', err));
+
+}
+
+
+document.querySelectorAll('#buttons button').forEach((btn) => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('#buttons button')
+            .forEach((b) => b.classList.toggle('selected', b===btn));
+        load_weather(LOCATIONS[btn.dataset.loc]);
+    });
+});
+
+setInterval(update_time, 10000);
+document.querySelector('#buttons button[data-loc="portland"]').click(); 
+
+
+
 

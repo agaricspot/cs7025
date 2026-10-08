@@ -11,9 +11,21 @@
     <div id="overlay" class="clouds"> </div>
     <img id="cloud" src="rain-clouds-png-27.png" >
     <div id="look" class="day"></div>
+
+
+
     <div class="text">
-            <h1>Portland Weather</h1>
-            <span>It is currently <span id="time">00:00</span> in Portland, OR</span> <br><br>
+            <h1><span id="place"></span> Weather</h1>
+
+            <div id="buttons">
+                <button data-loc="portland">Portland</button>
+                <button data-loc="dublin">Dublin</button>
+                <button data-loc="worcester">Worcester</button>
+
+
+            </div>
+
+            <span>It is currently <span id="time">00:00</span> in <span id="place2"></span></span> <br><br>
 
             <span> The temperature is <span id="temp"></span></span><br>
             <span>High: <span id="high"> </span> &emsp; Low: <span id="low"></span></span> <br><br>
