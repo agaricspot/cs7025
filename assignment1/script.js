@@ -48,7 +48,7 @@ function load_weather(loc){
         console.log(loc.name, 'cover =', cover, 'cloud classes:', document.getElementById('cloud').className);
         document.getElementById('cloud').classList.toggle('active', cover>30);
         document.getElementById('overlay').classList.toggle('active', cover>50);
-        document.getElementById('look').className = !current.isDay ? 'day' : 'night';
+        document.getElementById('look').className = data.current.is_day === 1 ? 'day' : 'night';
         
         //temperature & conversion
         let temp = data.current.temperature_2m;
