@@ -27,11 +27,22 @@ fetch(data_src)
     })
     .then((data) => {
         //class change for colors goes here 
-       if(data.isDay){
-            document.getElementById('look').setAttribute('class', 'day');
+        let cover = data.current.cloud_cover;
+        let cloud_active = cover > 30;
+        let overlay_active = cover > 50;
+
+        document.getElementById('cloud').classList.toggle('active', cloud_active);
+        document.getElementById('overlay').classList.toggle('active', overlay_active);
+
+        look.className = isDay ? 'day' : 'night';
+        
+
+        /*if(!data.isDay){ //for some reason its stored backward 
+            document.getElementById('look').setAttribute('class', 'day'); 
         } else {
             document.getElementById('look').setAttribute('class', 'night');
-        }
+        
+        }*/
 
 
 
