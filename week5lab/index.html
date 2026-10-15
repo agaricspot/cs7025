@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Library</title>
+    <link  rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <h2>Cool Movie Library</h2>
+    <button id="towatch" onclick="generate_watchlist()">Generate Watchlist</button> 
+    <p id="watchlist"></p>
+    <br>
+    <label>Search by genre: <input type="text" id="genresearch">
+        <button onclick="display_genre(document.getElementById('genresearch').value)">Search</button></label>
+    <ul id="genrelist" hidden></ul>
+
+    <button id="display" onclick="display_library()">See All</button>
+
+    <p>Dont see your movie? Add it!</p>
+
+    <label for="title">Title:</label>
+    <input type="text" id="title">
+    <label for="genre">Genre:</label>
+    <input type="text" id="genre">
+    <label for="title">Leading Actors:</label>
+    <input type="text" id="actors">
+
+    <button type="submit">Add</button>
+
+
+
+</body>
+</html>
