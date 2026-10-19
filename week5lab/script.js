@@ -1,25 +1,6 @@
-
-
-
-/*// Go through each genre
-FOR each genre IN musicLibrary
-    DISPLAY genre.genre
-
-    // Go through the musicians in that genre
-    FOR each musician IN genre.musicians
-        DISPLAY musician.name
-
-        // Go through that musician's songs
-        FOR each song IN musician.songs
-            DISPLAY song
-        END FOR
-    END FOR
-END FOR*/
- 
-
 let library = [
     {//horror
-        genre: "Horror",
+        genre: "horror",
         movies:[
             {
                 title: "The Shining",
@@ -44,7 +25,7 @@ let library = [
         ]
     },
     {//drama
-        genre: "Drama",
+        genre: "drama",
         movies:[
             {
                 title: "Forrest Gump",
@@ -69,7 +50,7 @@ let library = [
         ]
     },
     {//comedy
-        genre: "Comedy",
+        genre: "comedy",
         movies:[
             {
                 title: "Being John Malkovich",
@@ -94,7 +75,7 @@ let library = [
         ]
     },
     { //fantasy
-        genre: "Fantasy",
+        genre: "fantasy",
         movies:[
             {
                 title: "Being John Malkovich",
@@ -119,7 +100,7 @@ let library = [
         ]
     },
     { //war
-        genre: "War",
+        genre: "war",
         movies:[
             {
                 title: "Life is Beautiful",
@@ -146,39 +127,114 @@ let library = [
    
 ];
 
-//dunno if ill use this but its nice for lookup 
 let library_map = new Map(
     library.map(({genre, movies}) => [genre, movies])
 ); 
 
 
 function display_genre(genre){
-    let data = library_map.get(genre); 
+    let data = library_map.get(genre.toLowerCase()); 
     const list = $('#genrelist');
-    console.log(3)
+    list.empty();
+    list.prop('hidden', false);
 
-    for(movie of data){ 
+    if (data === undefined){
+       list.text('genre not found');
+        return;
+    }
+    
+    for(const movie of data){ 
         const li = document.createElement('li');
         li.textContent = movie.title;
-        list.append('li');
-        console.log("movie");
+        list.append(li);
+        //console.log("movie");
     }
-
-    list.hidden = false; 
 
 }
 
 function display_library(){
+    const list = $('#genrelist');
+    list.empty(); 
+    list.prop('hidden', false); 
+
+    const shownTitles = new Set();
+    for (const {movies} of library){
+        for (const movie of movies){
+            const titleKey = movie.title.trim().toLowerCase();
+            if (shownTitles.has(titleKey)){
+                continue;
+            }
+            shownTitles.add(titleKey);
+
+            const li = document.createElement('li');
+            li.textContent = movie.title;
+            list.append(li);
+        }
+    }
 
 }
 
 
 function generate_watchlist(){
+    const list = $('#watchlist');
+    list.empty();
+    list.prop('hidden', false); 
 
+    const shownTitles = new Set();
+
+    for (const [genre, movies] of library_map){
+        const candidates = movies.filter(movie =>
+            !shownTitles.has(movie.title.trim().toLowerCase())
+        );
+
+        if (candidates.length === 0){
+            continue;
+        }
+
+        const movie = candidates[Math.floor(Math.random() * candidates.length)];
+        shownTitles.add(movie.title.trim().toLowerCase());
+
+        const li = document.createElement('li');
+        li.textContent = `${movie.title} (${genre})`;
+        list.append(li);
+    }
 }
 
 function add_movie(){ 
+    let title_input = $('#title').val();
+    let genre_input = $('#genre').val();
+    let act_input = $('#actors').val();
+
+    let title = title_input.trim();
+    let genres = genre_input.split(',')
+        .map(item => item.trim().toLowerCase()).filter(Boolean);
+    let leads = act_input.split(',').map(actor => actor.trim()).filter(Boolean);
+
+    for(const item of genres){
+        let movies = library_map.get(item); 
+        if(!movies){
+            movies = [];
+            library.push({genre: item, movies});
+            library_map.set(item, movies); 
+        }
+
+        const alreadyInGenre = movies.some(movie =>
+            movie.title.trim().toLowerCase() === title.toLowerCase()
+        );
+        if (!alreadyInGenre){
+            movies.push({title, leads});
+        }
+    }
+
+    if (genres.length > 0){
+        display_genre(genres[0]);
+    }
+
+    $('#title').val('');
+    $('#genre').val('');
+    $('#actors').val('');
+    
+
 
 }
-
-//console.log(library_map.get("Horror"));
+console.log(library_map.keys());

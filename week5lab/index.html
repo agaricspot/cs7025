@@ -12,24 +12,26 @@
 <body>
     <h2>Cool Movie Library</h2>
     <button id="towatch" onclick="generate_watchlist()">Generate Watchlist</button> 
-    <p id="watchlist"></p>
+    <ul id="watchlist"></ul>
     <br>
     <label>Search by genre: <input type="text" id="genresearch">
         <button onclick="display_genre(document.getElementById('genresearch').value)">Search</button></label>
+    <button id="display" onclick="display_library()">See All</button>
     <ul id="genrelist" hidden></ul>
 
-    <button id="display" onclick="display_library()">See All</button>
+   
 
     <p>Dont see your movie? Add it!</p>
 
     <label for="title">Title:</label>
     <input type="text" id="title">
-    <label for="genre">Genre:</label>
+    <label for="genre">Genre(s):</label>
     <input type="text" id="genre">
-    <label for="title">Leading Actors:</label>
+    <label for="actors">Leading Actor(s):</label>
     <input type="text" id="actors">
 
-    <button type="submit">Add</button>
+    <button type="button" onclick="add_movie()">Add</button>
+    <p> if inputting mutiple items, separate by commas.</p>
 
 
 

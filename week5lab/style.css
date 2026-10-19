@@ -1,3 +1,12 @@
 body{
     text-align: center;
 }
+
+ul{
+    list-style-position: inside;
+    text-align: left;
+    width: fit-content;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 1em;
+}
