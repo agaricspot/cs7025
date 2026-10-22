@@ -1,0 +1,77 @@
+{
+    "profiles": [{
+        "platform": "Tumblr", 
+        "url": "https://www.tumblr.com/agaricspot"
+    },
+    {
+        "platform": "YouTube", 
+        "url": "https://www.youtube.com/@agaricspot/"
+    },
+    {
+        "platform": "Itch.io", 
+        "url": "https://agaricspot.itch.io/"
+    },
+    {
+        "platform": "Artistree", 
+        "url": "https://artistree.io/agaricspot"
+    },
+    {
+        "platform": "Vgen", 
+        "url": 1234
+    }],
+
+    "projects":[{
+        "title":"Disillusion",
+        "desc": "Principal character artist, technical artist, and systems programmer for a collaborative project completed in fulfillment for WPI’s IMGD & CS degrees. Displayed at PAX East 2026.",
+        "url": "https://store.steampowered.com/app/4541690/Disillusion/"
+
+    },
+    {
+        "title":"Derail the Dragon",
+        "desc": "Worked with a team of five other students to create a rougelite game in seven weeks for IMGD’s Showfest Game Jam. Modeled, rigged & helped to animate the player character & abilities, as well as created the particle systems used throughout the project. Displayed at PAX East 2026.",
+        "url": "https://torin-d.itch.io/derail-the-dragon"
+
+    },
+    {
+        "title":"Nightmarket in the Necropolis",
+        "desc": "Solo dev walking simulator created in seven weeks from the ground up in the Unity engine",
+        "url": "https://agaricspot.itch.io/necropolis-nightmarket"
+
+    },
+    {
+        "title":"Alien Adventure",
+        "desc": "Sprite artist & animator and art asset director for a short ASCII adventure game developed in a team of two",
+        "url": "https://agaricspot.itch.io/alien-adventure"
+    }],
+
+    "shaders":[{
+        "name": "Dots",
+        "desc": "Short sound responsive shader written in the Schwartz live coding environment (https://charlieroberts.codeberg.page/TheSchwartz/) based upon Norman McLaren's Dots film.",
+        "url": "https://www.youtube.com/watch?v=7fsS-SCQM5I"
+    },
+    {
+        "name": "CRT Camera",
+        "desc": "Short sound responsive shader written in the Schwartz live coding environment (https://charlieroberts.codeberg.page/TheSchwartz/) based upon Norman McLaren's Dots film.",
+        "url": "https://www.youtube.com/watch?v=7fsS-SCQM5I"
+    },
+    {
+        "name": "Vants",
+        "desc": "Short sound responsive shader written in the Schwartz live coding environment (https://charlieroberts.codeberg.page/TheSchwartz/) based upon Norman McLaren's Dots film.",
+        "url": "https://www.youtube.com/watch?v=7fsS-SCQM5I"
+    },
+    {
+        "name": "Reaction-Diffusuion",
+        "desc": "Short sound responsive shader written in the Schwartz live coding environment (https://charlieroberts.codeberg.page/TheSchwartz/) based upon Norman McLaren's Dots film.",
+        "url": "https://www.youtube.com/watch?v=7fsS-SCQM5I"
+    },
+    {
+        "name": "Particle Fountain",
+        "desc": "Short sound responsive shader written in the Schwartz live coding environment (https://charlieroberts.codeberg.page/TheSchwartz/) based upon Norman McLaren's Dots film.",
+        "url": "https://www.youtube.com/watch?v=7fsS-SCQM5I"
+    },
+    {
+        "name": "UE5 Physaru,",
+        "desc": "Short sound responsive shader written in the Schwartz live coding environment (https://charlieroberts.codeberg.page/TheSchwartz/) based upon Norman McLaren's Dots film.",
+        "url": "https://www.youtube.com/watch?v=7fsS-SCQM5I"
+    }]
+}
