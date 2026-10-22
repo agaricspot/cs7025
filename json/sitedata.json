@@ -46,32 +46,32 @@
 
     "shaders":[{
         "name": "Dots",
-        "desc": "Short sound responsive shader written in the Schwartz live coding environment (https://charlieroberts.codeberg.page/TheSchwartz/) based upon Norman McLaren's Dots film.",
+        "desc": "Short sound-responsive shader written in the Schwartz live coding environment (https://charlieroberts.codeberg.page/TheSchwartz/) based upon Norman McLaren's Dots film.",
         "url": "https://www.youtube.com/watch?v=7fsS-SCQM5I"
     },
     {
         "name": "CRT Camera",
-        "desc": "Short sound responsive shader written in the Schwartz live coding environment (https://charlieroberts.codeberg.page/TheSchwartz/) based upon Norman McLaren's Dots film.",
-        "url": "https://www.youtube.com/watch?v=7fsS-SCQM5I"
+        "desc": "Webcam shader that changes live camera feed into a CRT style screen (Does not work in Firefox due to WebGPU restrictions)",
+        "url": ""
     },
     {
         "name": "Vants",
-        "desc": "Short sound responsive shader written in the Schwartz live coding environment (https://charlieroberts.codeberg.page/TheSchwartz/) based upon Norman McLaren's Dots film.",
-        "url": "https://www.youtube.com/watch?v=7fsS-SCQM5I"
+        "desc": "My take on the virtual ants simulation by Chris Langton. Added a few different ant behaviors and ",
+        "url": ""
     },
     {
         "name": "Reaction-Diffusuion",
-        "desc": "Short sound responsive shader written in the Schwartz live coding environment (https://charlieroberts.codeberg.page/TheSchwartz/) based upon Norman McLaren's Dots film.",
+        "desc": "Reaction-Diffusion implemented with gulls and webgpu.",
         "url": "https://www.youtube.com/watch?v=7fsS-SCQM5I"
     },
     {
         "name": "Particle Fountain",
-        "desc": "Short sound responsive shader written in the Schwartz live coding environment (https://charlieroberts.codeberg.page/TheSchwartz/) based upon Norman McLaren's Dots film.",
+        "desc": "Stylized fire & smoke particle fountain.",
         "url": "https://www.youtube.com/watch?v=7fsS-SCQM5I"
     },
     {
-        "name": "UE5 Physaru,",
-        "desc": "Short sound responsive shader written in the Schwartz live coding environment (https://charlieroberts.codeberg.page/TheSchwartz/) based upon Norman McLaren's Dots film.",
-        "url": "https://www.youtube.com/watch?v=7fsS-SCQM5I"
+        "name": "UE5 Physarum,",
+        "desc": "Rewrite of the Physarum slime mold simulation in Unreal Engine 5.6 using blueprints and custom HLSL. It kind of works.",
+        "url": "https://www.youtube.com/watch?v=Q0yEMRUu5uU"
     }]
 }
